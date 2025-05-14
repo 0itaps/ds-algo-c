@@ -11,16 +11,42 @@ typedef struct{
 
 // Core Functions
 
-void initArray(DynamicArray *arr, int initial_capacity) {}
+void initArray(DynamicArray *arr, int initial_capacity) {
+    arr->data = (int *) malloc(initial_capacity * sizeof(int));
+    arr->size = 0;
+    arr->capacity = initial_capacity;
+}
 
-void freeArray(DynamicArray *arr) {}
+void freeArray(DynamicArray *arr) {
+    free(arr->data);
+    arr->data = NULL;
+    arr->size = 0;
+    arr->capacity = 0;
+}
 
-void resizeArray(DynamicArray *arr) {}
+void resizeArray(DynamicArray *arr, int new_capacity) {
+    int *new_data = (int *) malloc(new_capacity * sizeof(int));
+
+    for (int i = 0; i < arr->size; i++) {
+        new_data[i] = arr->data[i];
+    }
+
+    free(arr->data);
+    arr->data = new_data;
+    arr->capacity = new_capacity;
+}
 
 
 // Element Insertion
 
-void pusBack(DynamicArray *arr, int value) {}
+void pushBack(DynamicArray *arr, int value) {
+    if (arr->size == arr->capacity) {
+        resizeArray(arr, (2 * arr->capacity));
+    }
+
+    arr->data[arr->size] = value;
+    arr->size++;
+}
 
 void insertAt(DynamicArray *arr, int index, int value) {}
 
