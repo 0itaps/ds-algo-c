@@ -22,6 +22,11 @@ void initArray(DynamicArray *arr, int initial_capacity) {
     arr->data = malloc(sizeof(int) * initial_capacity);
     arr->size = 0;
     arr->capacity = initial_capacity;
+
+    if (arr->data == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
 }
 
 /**
