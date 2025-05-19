@@ -2,13 +2,25 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+// Structure to represent a generic dynamic array.
 typedef struct {
-    void *data;
-    int size;
-    int capacity;
-    size_t element_size;
+    void *data;          // pointer to the raw data buffer (element_size * capacity bytes)
+    int size;            // number of elements currently stored
+    int capacity;        // total number of elements that can be stored before resizing
+    size_t element_size; // size (in bytes) of each element stored in the array
 } GenericArray;
 
+// Core Functions
+
+/**
+ * Initializes a dynamic array with a given element size and initial capacity.abort
+ * Sets the size to 0 and allocates memory for the specified number of 
+ * 
+ * @param arr              pointer to the GenericArray to initialize
+ * @param element_size     size of the elements being stored in the generic array
+ * @param initial_capacity number of elements to allocate space for initially
+ * 
+ */
 void initArray(GenericArray *arr, size_t element_size, int initial_capacity) {
     arr->element_size = element_size;
     arr->capacity = initial_capacity;
@@ -154,5 +166,5 @@ void printChar(void *elem) {
 }
 
 int main() {
-    
+
 }
