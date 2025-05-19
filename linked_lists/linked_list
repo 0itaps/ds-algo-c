@@ -1,0 +1,110 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+typedef struct Node {
+    int data;
+    Node *next;
+} Node;
+
+typedef struct LinkedList {
+    Node *head;
+    int size;
+} LinkedList;
+
+void initList(LinkedList *list) {
+    list->head = NULL;
+    list->size = 0;
+}
+
+Node *createNode(int value) {
+    Node *new_node = malloc(sizeof(Node));
+    if (new_node == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        return NULL;
+    }
+
+    new_node->data = value;
+    new_node->next = NULL;
+    return new_node;
+}
+
+void insertAtHead(LinkedList *list, int value) {
+    Node *new_node = createNode(value);
+    if (new_node == NULL) return;
+
+    new_node->next = list->head;
+    list->head = new_node;
+    list->size++;
+}
+
+void insertAtTail(LinkedList *list, int value) {
+    Node *curr = list->head;
+
+    Node *new_node = createNode(value);
+    if (new_node == NULL) return;
+
+    if (list->head == NULL) {
+    list->head = new_node;
+    list->size++;
+    return;
+}
+
+    while (curr->next != NULL) {
+        curr = curr->next;
+    }
+
+    curr->next = new_node;
+    list->size++;
+}
+
+void insertAtPosition(LinkedList *list, int value, int index) {
+    Node *curr = list->head;
+
+    if (index < 0 || index > list->size) {
+        fprintf(stderr, "Error: Invalid index");
+        exit(EXIT_FAILURE);
+    }
+
+    if (index == 0) {
+        insertAtHead(list, value);
+        return;
+    }
+
+    if (index == list->size) {
+        insertAtTail(list, value);
+        return;
+    }
+
+    int count = 0;
+    while (count == index) {
+        curr = curr->next;
+        count++;
+    }
+
+    Node *new_node = createNode(value);
+    new_node->next = curr;
+    list->size++;
+}
+
+void deleteByValue();
+
+void deleteByPosition();
+
+void searchIterative();
+
+void searchRecursive();
+
+void printList();
+
+void printReverse();
+
+void getLength();
+
+void isEmpty();
+
+void freeList();
+
+int main() {
+    return 0;
+}
