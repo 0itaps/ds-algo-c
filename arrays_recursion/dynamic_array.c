@@ -1,12 +1,23 @@
+/**
+ * @file dynamic_array.c
+ * @brief Implementation of a simple dynamic array for integers.
+ *
+ * Provides basic operations such as initialization, insertion,
+ * removal, and access for a resizable array of int values.
+ *
+ * @author Isaac Tapia
+ * @date   May 2025
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 // Structure to represent a dynamic array.
 typedef struct{
-    int *data;    // the data stored inside the dynamic array
-    int size;     // the size of the dynamic array
-    int capacity; // the capacity of the dynamic array
+    int *data;    // pinter to the contiguous block of int elements (capacity elements total)
+    int size;     // number of elements currently stored
+    int capacity; // total number of elements that can be stored before resizing
 } DynamicArray;
 
 // Core Functions
@@ -105,7 +116,6 @@ void insertAt(DynamicArray *arr, int index, int element) {
     arr->size++;
 }
 
-
 // Element Deletion
 
 /**
@@ -144,7 +154,6 @@ void removeAt(DynamicArray *arr, int index) {
     arr->size--;
 }
 
-
 // Access/Utility
 
 /**
@@ -182,7 +191,7 @@ void set(DynamicArray *arr, int index, int element) {
 /**
  * Returns the size of a dynamic array.
  * 
- * @param arr pointer to the Dynamic Array
+ * @param arr pointer to the DynamicArray
  * @return the size of the dynamic array
  */
 int size(DynamicArray *arr) {
@@ -192,7 +201,7 @@ int size(DynamicArray *arr) {
 /**
  * Checks whether a dynamic array is empty.
  * 
- * @param arr pointer to the Dynamic Array
+ * @param arr pointer to the DynamicArray
  * @return true if empty; false otherwise 
  */
 bool isEmpty(DynamicArray *arr) {
