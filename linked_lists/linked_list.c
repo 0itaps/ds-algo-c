@@ -4,7 +4,7 @@
 
 typedef struct Node {
     int data;
-    Node *next;
+    struct Node *next;
 } Node;
 
 typedef struct LinkedList {
@@ -211,5 +211,20 @@ bool isEmpty(LinkedList *list) {
 }
 
 int main() {
+    LinkedList list;
+    initList(&list);
+
+    printf("Initializing and printing en empty LinkedList:\n");
+    printList(&list);
+    printf("isEmpty: %s\n", isEmpty(&list) ? "true" : "false");
+
+    printf("Adding elements to the list:\n");
+    for (int i = 0; i < 10; i++) {
+        insertAtTail(&list, i);
+    }
+    printList(&list);
+
+    printf("Size of the list: %d\n", getLength(&list));
+
     return 0;
 }
