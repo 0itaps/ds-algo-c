@@ -264,7 +264,7 @@ int main () {
     pushBack(&arr, x);
     printArray(&arr);
 
-    free(&arr);
+    freeArray(&arr);
 
     return 0;
 }

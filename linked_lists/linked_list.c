@@ -216,7 +216,7 @@ int main() {
 
     printf("Initializing and printing en empty LinkedList:\n");
     printList(&list);
-    printf("isEmpty: %s\n", isEmpty(&list) ? "true" : "false");
+    printf("isEmpty: %s\n", isEmpty(&list) ? "True" : "False");
 
     printf("Adding elements to the list:\n");
     for (int i = 0; i < 10; i++) {
@@ -226,5 +226,21 @@ int main() {
 
     printf("Size of the list: %d\n", getLength(&list));
 
+    printf("Removing value 9 & node at index 4:\n");
+    deleteByValue(&list, 9);
+    deleteByPosition(&list, 4);
+    printList(&list);
+
+    printf("Inserting value at head and also at index 4:\n");
+    insertAtHead(&list, 9);
+    insertAtPosition(&list, 4, 4);
+    printList(&list);
+
+    printf("Searching for value 6 iteratively:\n Found? (T/F): %s\n", searchIterative(&list, 6) ? "True" : "False");
+    printf("Searching for value 6 recursively:\n Found? (T/F): %s\n", searchRecursive(list.head, 6) ? "True" : "False");
+
+    printf("Printing the list in reverse:\n");
+    printReverse(list.head);
+    
     return 0;
 }
