@@ -16,7 +16,7 @@
 // Structure to represent a node.
 typedef struct Node {
     int data;          // the value stored in this node
-    struct Node *next; // pointer to the next node in the list (NULL if last node);
+    struct Node *next; // pointer to the next node in the list (NULL if last node)
 } Node;
 
 // Structure to represent a linked list 
